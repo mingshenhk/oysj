@@ -137,6 +137,10 @@ def clean(text):
         text = re.sub(r'<table[^>]*class=["\']?citation[^>]*?>.*?</table>', '', text, flags=re.IGNORECASE | re.DOTALL)
         text = re.sub(r'<[^>]+data-cite[^>]*?>.*?</[^>]+>', '', text, flags=re.IGNORECASE | re.DOTALL)
         text = re.sub(r'<[^>]+data-note[^>]*?>.*?</[^>]+>', '', text, flags=re.IGNORECASE | re.DOTALL)
+        text = re.sub(r'<references group="[^"]*"\s*/>', '', text)
+        text = re.sub(r'<references(\s+group="[^"]*")?\s*/>', '', text)
+        text = re.sub(r'<nowiki>.*?</nowiki>', '', text, flags=re.DOTALL)
+        
 
 
         text = re.sub(r'<references\b[^<>]*/>', '', text, flags=re.IGNORECASE)
